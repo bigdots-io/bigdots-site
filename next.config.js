@@ -2,6 +2,9 @@
 const nextConfig = {
   output: "export",
   compress: false,
+  optimization: {
+    minimizer: [],
+  },
   compiler: {
     removeConsole: false,
   },
