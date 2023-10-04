@@ -1,6 +1,7 @@
 "use client";
 
 import BigdotsDisplay, {
+  image,
   marquee,
   meteorShower,
   solidColor,
@@ -134,6 +135,18 @@ export default function Home() {
             solidColor({ color: "#B58B00" }),
             marquee({ color: "#FFF", speed: 100 }),
           ]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+      <div style={{ margin: 10 }}>
+        <BigdotsDisplay
+          layers={[image({ url: " /test.png" })]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+      <div style={{ margin: 10 }}>
+        <BigdotsDisplay
+          layers={[image({ url: " /test.gif", startingRow: 3 })]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
