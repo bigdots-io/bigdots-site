@@ -146,7 +146,10 @@ export default function Home() {
       </div>
       <div style={{ margin: 10 }}>
         <BigdotsDisplay
-          layers={[image({ url: " /test.gif", startingRow: 3 })]}
+          layers={[
+            image({ url: " /test.gif", startingRow: 1, speed: 500 }),
+            image({ url: " /test.gif", startingRow: 9, speed: 250 }),
+          ]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
