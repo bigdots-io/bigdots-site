@@ -2,13 +2,13 @@
   "name": "bigdots-site",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "rm -fr .next && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@bigdots-io/react-client": "bigdots-io/react-client.git#v0.4.2",
+    "@bigdots-io/react-client": "bigdots-io/react-client.git#v0.5.0",
     "@types/node": "20.4.8",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",

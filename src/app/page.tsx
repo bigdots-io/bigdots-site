@@ -7,6 +7,7 @@ import BigdotsDisplay, {
   solidColor,
   text,
   twinkle,
+  time,
 } from "@bigdots-io/react-client";
 import { useEffect, useState } from "react";
 
@@ -149,6 +150,15 @@ export default function Home() {
           layers={[
             image({ url: " /test.gif", startingRow: 1, speed: 500 }),
             image({ url: " /test.gif", startingRow: 9, speed: 250 }),
+          ]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+      <div style={{ margin: 10 }}>
+        <BigdotsDisplay
+          layers={[
+            solidColor({ color: "#B58B00" }),
+            time({ alignment: "center", startingRow: 2 }),
           ]}
           dimensions={{ height: 16, width: 64 }}
         />
