@@ -156,6 +156,7 @@ export default function Home() {
       </div>
       <div style={{ margin: 10 }}>
         <BigdotsDisplay
+          devMode
           layers={[
             solidColor({ color: "#B58B00" }),
             time({ alignment: "center", startingRow: 2 }),
