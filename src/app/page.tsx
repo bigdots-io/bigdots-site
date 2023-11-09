@@ -88,10 +88,8 @@ export default function Home() {
             twinkle({ speed: 100, color: "#AAA" }),
             text({
               text: "hello!!",
-              alignment: "right",
+              alignment: "left",
               color: "#FFFF00",
-              startingRow: 1,
-              width: 62,
             }),
           ]}
           dimensions={{ height: 16, width: 64 }}
