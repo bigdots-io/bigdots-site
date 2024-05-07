@@ -1,14 +1,16 @@
 "use client";
 
-import BigdotsDisplay, {
-  image,
-  marquee,
-  meteorShower,
-  solidColor,
+import Display from "./display";
+import {
+  box,
   text,
   twinkle,
+  meteors,
+  marquee,
+  image,
   time,
-} from "@bigdots-io/react-client";
+  ripple,
+} from "@bigdots-io/display-engine";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -23,9 +25,15 @@ export default function Home() {
   return (
     <>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
+          layers={[ripple({ brightness: 8, speed: 4, waveHeight: 2 })]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+      <div style={{ margin: 10 }}>
+        <Display
           layers={[
-            solidColor({ color: "#FF0000" }),
+            box({ color: "#FF0000" }),
             text({ text: "hi", alignment: "left", brightness: 4 }),
             text({
               text: "hi",
@@ -41,37 +49,38 @@ export default function Home() {
         />
       </div>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
           layers={[
-            solidColor({
+            box({
               color: "#228B22",
               width: 5,
               height: 5,
               startingColumn: 5,
               startingRow: 10,
             }),
-            solidColor({
+            box({
               color: "#FF0000",
               width: 5,
               height: 5,
               startingColumn: 20,
               startingRow: 10,
             }),
-            solidColor({
+            box({
               color: "#00FFFF",
               width: 50,
               height: 10,
               startingColumn: 3,
               startingRow: 2,
+              borderWidth: 1,
             }),
-            solidColor({
+            box({
               color: "#FFC0CB",
               width: 5,
               height: 5,
               startingColumn: 15,
               startingRow: 10,
             }),
-            solidColor({
+            box({
               color: "#FFFF00",
               width: 50,
               height: 3,
@@ -83,7 +92,7 @@ export default function Home() {
         />
       </div>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
           layers={[
             twinkle({ speed: 100, color: "#AAA" }),
             text({
@@ -96,9 +105,9 @@ export default function Home() {
         />
       </div>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
           layers={[
-            meteorShower({ color: "#FF0000" }),
+            meteors({ color: "#FF0000" }),
             text({
               text: "THIS IS A TEST",
               font: "system-6",
@@ -111,9 +120,9 @@ export default function Home() {
         />
       </div>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
           layers={[
-            solidColor({
+            box({
               color: trigger ? "#228B22" : "#FF0000",
               brightness: 7,
             }),
@@ -129,22 +138,22 @@ export default function Home() {
         />
       </div>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
           layers={[
-            solidColor({ color: "#B58B00" }),
+            box({ color: "#B58B00" }),
             marquee({ color: "#FFF", speed: 100 }),
           ]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
           layers={[image({ url: " /test.png" })]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
           layers={[
             image({ url: " /test.gif", startingRow: 1, speed: 500 }),
             image({ url: " /test.gif", startingRow: 9, speed: 250 }),
@@ -153,10 +162,10 @@ export default function Home() {
         />
       </div>
       <div style={{ margin: 10 }}>
-        <BigdotsDisplay
+        <Display
           devMode
           layers={[
-            solidColor({ color: "#B58B00" }),
+            box({ color: "#B58B00" }),
             time({ alignment: "center", startingRow: 2 }),
           ]}
           dimensions={{ height: 16, width: 64 }}
