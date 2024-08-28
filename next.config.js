@@ -4,6 +4,9 @@ const nextConfig = {
   compiler: {
     removeConsole: false,
   },
+  experimental: {
+    esmExternals: "loose", // required to make Konva & react-konva work
+  },
 };
 
 module.exports = nextConfig;

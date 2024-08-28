@@ -8,7 +8,6 @@ import {
   meteors,
   marquee,
   image,
-  time,
   ripple,
 } from "@bigdots-io/display-engine";
 import { useEffect, useState } from "react";
@@ -17,32 +16,31 @@ export default function Home() {
   const [trigger, setTrigger] = useState<boolean>(false);
 
   useEffect(() => {
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       setTrigger((trigger) => !trigger);
     }, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
     <>
-      <div style={{ margin: 10 }}>
-        <Display
-          layers={[ripple({ brightness: 8, speed: 4, waveHeight: 2 })]}
-          dimensions={{ height: 16, width: 64 }}
-        />
-      </div>
-      <div style={{ margin: 10 }}>
+      {/* <div style={{ margin: 10 }}>
         <Display
           layers={[
             box({ color: "#FF0000" }),
-            text({ text: "hi", alignment: "left", brightness: 4 }),
             text({
-              text: "hi",
+              text: "hi1",
               alignment: "right",
               brightness: 7,
             }),
             text({
-              text: "hi",
+              text: "hi2",
               alignment: "center",
+            }),
+            text({
+              text: "hi3",
+              alignment: "left",
             }),
           ]}
           dimensions={{ height: 16, width: 64 }}
@@ -94,23 +92,10 @@ export default function Home() {
       <div style={{ margin: 10 }}>
         <Display
           layers={[
-            twinkle({ speed: 100, color: "#AAA" }),
-            text({
-              text: "hello!!",
-              alignment: "left",
-              color: "#FFFF00",
-            }),
-          ]}
-          dimensions={{ height: 16, width: 64 }}
-        />
-      </div>
-      <div style={{ margin: 10 }}>
-        <Display
-          layers={[
-            meteors({ color: "#FF0000" }),
+            twinkle({ color: "#FF0000" }),
             text({
               text: "THIS IS A TEST",
-              font: "system-6",
+              fontSize: 8,
               alignment: "center",
               color: "#FFFFFF",
               startingRow: 1,
@@ -127,8 +112,9 @@ export default function Home() {
               brightness: 7,
             }),
             text({
-              text: trigger ? "Pass" : "Fail",
-              font: "system-16",
+              text: trigger ? "PASS" : "FAIL",
+              font: "impact",
+              fontSize: 16,
               alignment: "center",
               color: "#FFFFFF",
               startingRow: 1,
@@ -136,23 +122,61 @@ export default function Home() {
           ]}
           dimensions={{ height: 16, width: 64 }}
         />
+      </div> */}
+      <div style={{ margin: 10 }}>
+        <Display
+          layers={[meteors({ minSpeed: 1000, maxSpeed: 100 })]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+      {/* <div style={{ margin: 10 }}>
+        <Display
+          layers={[ripple({ brightness: 8, speed: 4, waveHeight: 8 })]}
+          dimensions={{ height: 16, width: 64 }}
+        />
       </div>
       <div style={{ margin: 10 }}>
         <Display
           layers={[
-            box({ color: "#B58B00" }),
-            marquee({ color: "#FFF", speed: 100 }),
+            box({ color: "#FF5733" }),
+            marquee({
+              color: "#228B22",
+              text: "hi",
+              fontSize: 20,
+              direction: "horizontal",
+            }),
+            ripple({ speed: 4, waveHeight: 2 }),
           ]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
       <div style={{ margin: 10 }}>
         <Display
-          layers={[image({ url: " /test.png" })]}
+          layers={[
+            box({ color: "#B58B00" }),
+            marquee({ color: "#FFF", speed: 100, direction: "horizontal" }),
+          ]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
       <div style={{ margin: 10 }}>
+        <Display
+          layers={[
+            box({ color: "#B58B00" }),
+            marquee({ color: "#FFF", speed: 100, direction: "vertical" }),
+          ]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+
+      <div style={{ margin: 10 }}>
+        <Display
+          layers={[image({ url: " /test.png" })]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div> */}
+
+      {/* <div style={{ margin: 10 }}>
         <Display
           layers={[
             image({ url: " /test.gif", startingRow: 1, speed: 500 }),
@@ -160,17 +184,7 @@ export default function Home() {
           ]}
           dimensions={{ height: 16, width: 64 }}
         />
-      </div>
-      <div style={{ margin: 10 }}>
-        <Display
-          devMode
-          layers={[
-            box({ color: "#B58B00" }),
-            time({ alignment: "center", startingRow: 2 }),
-          ]}
-          dimensions={{ height: 16, width: 64 }}
-        />
-      </div>
+      </div> */}
     </>
   );
 }

@@ -6,15 +6,12 @@ import {
   MacroName,
   Pixel,
 } from "@bigdots-io/display-engine/lib/esm/types";
-import {
-  colorLuminance,
-  createDisplayEngine,
-} from "@bigdots-io/display-engine";
+import { createDisplayEngine } from "@bigdots-io/display-engine";
 
 export function updateDot(
   element: HTMLDivElement,
   dotElMap: { [k: string]: any },
-  { y, x, hex, brightness }: Pixel
+  { y, x, rgba, brightness }: Pixel
 ) {
   let el: any;
 
@@ -26,11 +23,10 @@ export function updateDot(
   }
 
   if (el.length > 0) {
-    const backgroundColor = hex
-      ? ((el[0] as HTMLElement).style.background = colorLuminance(
-          hex,
-          (brightness * 10) / 100 - 1
-        ))
+    const backgroundColor = rgba
+      ? ((
+          el[0] as HTMLElement
+        ).style.background = `rgba(${rgba[0]}, ${rgba[1]}, ${rgba[2]}, ${rgba[3]}`)
       : "#444"; // inactive pixel color
     (el[0] as HTMLElement).style.background = backgroundColor;
   }
