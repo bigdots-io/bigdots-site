@@ -125,7 +125,15 @@ export default function Home() {
       </div> */}
       <div style={{ margin: 10 }}>
         <Display
-          layers={[meteors({ minSpeed: 1000, maxSpeed: 100 })]}
+          layers={[
+            marquee({
+              color: "#228B22",
+              text: "Watch out for meteors!",
+              fontSize: 20,
+              direction: "horizontal",
+            }),
+            meteors({}),
+          ]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
