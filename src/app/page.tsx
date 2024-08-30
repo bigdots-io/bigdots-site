@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <div style={{ margin: 10 }}>
+      <div style={{ margin: 10 }}>
         <Display
           layers={[
             box({ color: "#FF0000" }),
@@ -122,7 +122,7 @@ export default function Home() {
           ]}
           dimensions={{ height: 16, width: 64 }}
         />
-      </div> */}
+      </div>
       <div style={{ margin: 10 }}>
         <Display
           layers={[
@@ -137,7 +137,7 @@ export default function Home() {
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
-      {/* <div style={{ margin: 10 }}>
+      <div style={{ margin: 10 }}>
         <Display
           layers={[ripple({ brightness: 8, speed: 4, waveHeight: 8 })]}
           dimensions={{ height: 16, width: 64 }}
@@ -182,7 +182,7 @@ export default function Home() {
           layers={[image({ url: " /test.png" })]}
           dimensions={{ height: 16, width: 64 }}
         />
-      </div> */}
+      </div>
 
       {/* <div style={{ margin: 10 }}>
         <Display
