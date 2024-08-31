@@ -45,8 +45,6 @@ function Row({
     <div
       style={{
         opacity,
-        height: 10,
-        lineHeight: 10,
         textAlign: "center",
         display: "flex",
         alignItems: "center",
@@ -71,11 +69,11 @@ function Column({
     <div
       style={{
         width: 10,
-        height: 10,
         textAlign: "center",
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
+        aspectRatio: "1/1",
       }}
       key={`row_${y}_col_${x}`}
     >
