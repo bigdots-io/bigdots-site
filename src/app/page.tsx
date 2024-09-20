@@ -9,6 +9,7 @@ import {
   marquee,
   image,
   ripple,
+  custom,
 } from "@bigdots-io/display-engine";
 import { useEffect, useState } from "react";
 
@@ -28,19 +29,21 @@ export default function Home() {
       <div style={{ margin: 10 }}>
         <Display
           layers={[
-            box({ color: "#FF0000" }),
+            box({ backgroundColor: "#FF0000" }),
             text({
               text: "hi1",
               alignment: "right",
-              brightness: 7,
+              color: "rgba(255, 255, 255, .5)",
             }),
             text({
               text: "hi2",
               alignment: "center",
+              color: "rgba(255, 255, 255, .8)",
             }),
             text({
               text: "hi3",
               alignment: "left",
+              color: "rgba(255, 255, 255, 1)",
             }),
           ]}
           dimensions={{ height: 16, width: 64 }}
@@ -50,21 +53,21 @@ export default function Home() {
         <Display
           layers={[
             box({
-              color: "#228B22",
+              backgroundColor: "#228B22",
               width: 5,
               height: 5,
               startingColumn: 5,
               startingRow: 10,
             }),
             box({
-              color: "#FF0000",
+              backgroundColor: "#FF0000",
               width: 5,
               height: 5,
               startingColumn: 20,
               startingRow: 10,
             }),
             box({
-              color: "#00FFFF",
+              backgroundColor: "#00FFFF",
               width: 50,
               height: 10,
               startingColumn: 3,
@@ -72,18 +75,50 @@ export default function Home() {
               borderWidth: 1,
             }),
             box({
-              color: "#FFC0CB",
+              backgroundColor: "#FFC0CB",
               width: 5,
               height: 5,
               startingColumn: 15,
               startingRow: 10,
             }),
             box({
-              color: "#FFFF00",
+              backgroundColor: "#FFFF00",
               width: 50,
               height: 3,
               startingColumn: 10,
               startingRow: 5,
+            }),
+          ]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+      <div style={{ margin: 10 }}>
+        <Display
+          layers={[
+            box({
+              backgroundColor: {
+                direction: "horizontal",
+                colorStops: [
+                  { color: "#FF0000", offset: 0 },
+                  { color: "#228B22", offset: 0.5 },
+                ],
+              },
+            }),
+          ]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+      <div style={{ margin: 10 }}>
+        <Display
+          layers={[
+            box({
+              backgroundColor: {
+                direction: "vertical",
+                colorStops: [
+                  { color: "#FFFF00", offset: 0 },
+                  { color: "#228B22", offset: 1 },
+                ],
+              },
             }),
           ]}
           dimensions={{ height: 16, width: 64 }}
@@ -108,8 +143,7 @@ export default function Home() {
         <Display
           layers={[
             box({
-              color: trigger ? "#228B22" : "#FF0000",
-              brightness: 7,
+              backgroundColor: trigger ? "#228B22" : "#FF0000",
             }),
             text({
               text: trigger ? "PASS" : "FAIL",
@@ -139,14 +173,14 @@ export default function Home() {
       </div>
       <div style={{ margin: 10 }}>
         <Display
-          layers={[ripple({ brightness: 8, speed: 4, waveHeight: 8 })]}
+          layers={[ripple({ speed: 4, waveHeight: 8 })]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>
       <div style={{ margin: 10 }}>
         <Display
           layers={[
-            box({ color: "#FF5733" }),
+            box({ backgroundColor: "#FF5733" }),
             marquee({
               color: "#228B22",
               text: "hi",
@@ -161,7 +195,7 @@ export default function Home() {
       <div style={{ margin: 10 }}>
         <Display
           layers={[
-            box({ color: "#B58B00" }),
+            box({ backgroundColor: "#B58B00" }),
             marquee({ color: "#FFF", speed: 100, direction: "horizontal" }),
           ]}
           dimensions={{ height: 16, width: 64 }}
@@ -170,7 +204,7 @@ export default function Home() {
       <div style={{ margin: 10 }}>
         <Display
           layers={[
-            box({ color: "#B58B00" }),
+            box({ backgroundColor: "#B58B00" }),
             marquee({ color: "#FFF", speed: 100, direction: "vertical" }),
           ]}
           dimensions={{ height: 16, width: 64 }}
@@ -180,6 +214,23 @@ export default function Home() {
       <div style={{ margin: 10 }}>
         <Display
           layers={[image({ url: " /test.png" })]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
+
+      <div style={{ margin: 10 }}>
+        <Display
+          layers={[
+            custom({
+              customFunc: (ctx) => {
+                ctx.textBaseline = "top";
+                ctx.font = `12px Arial`;
+                ctx.fillStyle = "Blue";
+
+                ctx.fillText("Custom Implementation!", 0, 0);
+              },
+            }),
+          ]}
           dimensions={{ height: 16, width: 64 }}
         />
       </div>

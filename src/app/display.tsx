@@ -11,7 +11,7 @@ import { createDisplayEngine } from "@bigdots-io/display-engine";
 export function updateDot(
   element: HTMLDivElement,
   dotElMap: { [k: string]: any },
-  { y, x, rgba, brightness }: Pixel
+  { y, x, rgba }: Pixel
 ) {
   let el: any;
 
@@ -121,7 +121,7 @@ export default function Display({
 
     setEngine(
       createDisplayEngine({
-        dimensions: dimensions,
+        dimensions,
         onPixelsChange: (pixels) => {
           pixels.forEach((pixel) => {
             if (ref.current === null) return;

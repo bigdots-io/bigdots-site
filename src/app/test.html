@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Low-Res Wireframe Mountain Fly-over</title>
+    <style>
+      canvas {
+        image-rendering: pixelated;
+        width: 640px; /* Scale up for visibility */
+        height: 160px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="terrainCanvas" width="64" height="16"></canvas>
+    <script>
+      const canvas = document.getElementById("terrainCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Simplified Perlin noise implementation
+      function noise(x, y) {
+        const X = Math.floor(x) & 255;
+        const Y = Math.floor(y) & 255;
+        return ((X + Y) % 13) / 13;
+      }
+
+      // Generate height map
+      function generateHeightMap(width, depth, offsetZ) {
+        const heightMap = new Array(width * depth);
+        const scale = 0.2;
+
+        for (let z = 0; z < depth; z++) {
+          for (let x = 0; x < width; x++) {
+            const noiseValue = noise((x + offsetZ) * scale, z * scale);
+            heightMap[z * width + x] = Math.floor(noiseValue * 8); // 0-7 range
+          }
+        }
+
+        return heightMap;
+      }
+
+      // Render terrain
+      function renderTerrain(offsetZ) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw sky
+        ctx.fillStyle = "#000033";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const mapWidth = 16;
+        const mapDepth = 16;
+        const heightMap = generateHeightMap(mapWidth, mapDepth, offsetZ);
+
+        ctx.fillStyle = "#00FF00";
+
+        for (let z = 0; z < mapDepth; z++) {
+          for (let x = 0; x < mapWidth; x++) {
+            const height = heightMap[z * mapWidth + x];
+            const screenX = x * 4;
+            const screenY = 16 - height - Math.floor(z / 2);
+
+            if (screenY >= 0 && screenY < 16) {
+              ctx.fillRect(screenX, screenY, 1, 1);
+            }
+          }
+        }
+      }
+
+      // Animation variables
+      let offsetZ = 0;
+      const speed = 0.2;
+
+      // Animation loop
+      function animate() {
+        offsetZ += speed;
+        renderTerrain(offsetZ);
+        requestAnimationFrame(animate);
+      }
+
+      // Start the animation
+      animate();
+    </script>
+  </body>
+</html>
