@@ -7,6 +7,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "22.9.0"
+  },
   "dependencies": {
     "@bigdots-io/display-engine": "^0.10.1",
     "@types/node": "20.4.8",
