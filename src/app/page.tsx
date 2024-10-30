@@ -10,6 +10,7 @@ import {
   image,
   ripple,
   custom,
+  coordinates,
 } from "@bigdots-io/display-engine";
 import { useEffect, useState } from "react";
 
@@ -26,6 +27,19 @@ export default function Home() {
 
   return (
     <>
+      <div style={{ margin: 10 }}>
+        <Display
+          layers={[
+            coordinates({
+              coordinates: {
+                "0:0": "#ffffff",
+                "1:1": "#ffffff",
+              },
+            }),
+          ]}
+          dimensions={{ height: 16, width: 64 }}
+        />
+      </div>
       <div style={{ margin: 10 }}>
         <Display
           layers={[
