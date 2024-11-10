@@ -11,7 +11,7 @@
     "node": "22.9.0"
   },
   "dependencies": {
-    "@bigdots-io/display-engine": "^0.12.0",
+    "@bigdots-io/display-engine": "^0.13.0",
     "@types/node": "20.4.8",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
