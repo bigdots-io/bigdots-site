@@ -36,6 +36,12 @@ export default function Home() {
       </div>
       <div style={{ margin: 10 }}>
         <Display
+          layers={[scene({ sceneName: "bunny" })]}
+          dimensions={{ height: 32, width: 32 }}
+        />
+      </div>
+      <div style={{ margin: 10 }}>
+        <Display
           layers={[
             coordinates({ coordinates: { "0:0": "#FFF", "0:1": "#FFF" } }),
           ]}
